@@ -1,6 +1,8 @@
 export class Message {
-    constructor(param) {
-
+    constructor(params) {
+        const {userId, text} = params
+        this.userId = userId
+        this.text = text
     }
 
 }

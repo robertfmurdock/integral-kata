@@ -1,4 +1,4 @@
-function millisInMinute() {
+export function millisInMinute() {
     return 60 * 1000;
 }
 

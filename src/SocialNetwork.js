@@ -9,4 +9,8 @@ export class SocialNetwork {
     viewTimeline(id) {
         return allMessages.filter(element => element.userId === id);
     }
+
+    follow(param) {
+
+    }
 }

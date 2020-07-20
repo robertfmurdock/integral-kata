@@ -5,6 +5,6 @@ export const socialNetwork = {
         allMessages.push(message)
     },
     viewTimeline(id) {
-        return allMessages;
+        return allMessages.filter(element => element.userId === id);
     }
 }

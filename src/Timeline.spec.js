@@ -32,7 +32,7 @@ describe("Timeline", function () {
             const bobsTimeline = socialNetwork.viewTimeline(bob.id, alice);
             expect(bobsTimeline).toEqual(bobMessages)
 
-            const presentedTimeline = Presenter.present(bobsTimeline)
+            const presentedTimeline = Presenter.present(bobsTimeline, now)
 
             expect(presentedTimeline).toEqual([
                 "Good game though. (1 minute ago)",

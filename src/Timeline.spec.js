@@ -30,7 +30,7 @@ describe("Timeline", function () {
         it("when Alice view Bob's timeline she seems the messages with their timestamps", function () {
             const alice = new User({id: uuid(), name: "Alice"})
 
-            const bobsTimeline = socialNetwork.viewTimeline({userId: alice.id, target: bob.id}, now, socialNetwork);
+            const bobsTimeline = socialNetwork.viewTimeline({userId: alice.id, target: bob.id});
             expect(bobsTimeline).toEqual(bobMessages)
 
             const presentedTimeline = Presenter.present(bobsTimeline, now, socialNetwork)

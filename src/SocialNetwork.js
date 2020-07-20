@@ -8,20 +8,24 @@ export class SocialNetwork {
         this.users.push(user)
     }
 
+    getUser(userId) {
+        return this.users.find(user => user.id === userId)
+    }
+
     publishMessage(message) {
         this.allMessages.push(message)
     }
 
     viewTimeline({userId, target}) {
-        let followerList;
+        let timelineTargetList;
 
         if (!target) {
-            followerList = this.follows(userId);
+            timelineTargetList = this.follows(userId);
         } else {
-            followerList = [target]
+            timelineTargetList = [target]
         }
 
-        return this.allMessages.filter(element => followerList.includes(element.userId));
+        return this.allMessages.filter(element => timelineTargetList.includes(element.userId));
     }
 
     follow({userId, target}) {

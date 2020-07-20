@@ -23,20 +23,21 @@ describe("Timeline", function () {
 
         beforeEach(function () {
             socialNetwork = new SocialNetwork()
+            socialNetwork.register(bob)
             bobMessages.forEach(message => socialNetwork.publishMessage(message))
         })
 
         it("when Alice view Bob's timeline she seems the messages with their timestamps", function () {
             const alice = new User({id: uuid(), name: "Alice"})
 
-            const bobsTimeline = socialNetwork.viewTimeline({userId: alice.id, target: bob.id});
+            const bobsTimeline = socialNetwork.viewTimeline({userId: alice.id, target: bob.id}, now, socialNetwork);
             expect(bobsTimeline).toEqual(bobMessages)
 
-            const presentedTimeline = Presenter.present(bobsTimeline, now)
+            const presentedTimeline = Presenter.present(bobsTimeline, now, socialNetwork)
 
             expect(presentedTimeline).toEqual([
-                "Good game though. (1 minute ago)",
-                "Darn! We lost! (2 minute ago)"
+                "Bob - Good game though. (1 minute ago)",
+                "Bob - Darn! We lost! (2 minutes ago)"
             ])
         })
 

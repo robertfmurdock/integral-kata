@@ -1,4 +1,4 @@
-import {socialNetwork} from "./socialNetwork";
+import {SocialNetwork} from "./SocialNetwork";
 import {v4 as uuid} from "uuid"
 import {Message} from "./Message";
 
@@ -15,6 +15,8 @@ describe("social network", function () {
             expectedMessage,
             new Message({userId: userId3, text: "3"}),
         ]
+        const socialNetwork = new SocialNetwork()
+
         messages.forEach(element =>
             socialNetwork.publishMessage(element)
         )

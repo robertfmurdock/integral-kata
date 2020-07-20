@@ -1,7 +1,7 @@
 import {User} from "./User";
 import {v4 as uuid} from "uuid"
-import {socialNetwork} from "./socialNetwork"
 import {Message} from "./Message";
+import {SocialNetwork} from "./SocialNetwork";
 
 describe("Publishing", function () {
 
@@ -11,6 +11,7 @@ describe("Publishing", function () {
             messageText: "I love the weather today.",
             userId: user.id
         })
+        const socialNetwork = new SocialNetwork()
         socialNetwork.publishMessage(message)
 
         const timeline = socialNetwork.viewTimeline(user.id)

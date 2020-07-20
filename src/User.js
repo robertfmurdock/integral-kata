@@ -1,6 +1,7 @@
 export class User {
-    constructor(param) {
-
+    constructor({id, name}) {
+        this.id = id
+        this.name = name
     }
 
 }

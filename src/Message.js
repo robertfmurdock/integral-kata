@@ -4,6 +4,7 @@ export class Message {
         this.userId = userId
         this.text = text
         this.timestamp = timestamp
+        Object.freeze(this)
     }
 
 }

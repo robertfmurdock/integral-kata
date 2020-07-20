@@ -1,7 +1,6 @@
 import {User} from "./User";
 import {uuid} from "./uuid";
 import {SocialNetwork} from "./SocialNetwork";
-import {Message} from "./Message";
 import {millisInMinute, Presenter} from "./Presenter";
 
 function minutes(number) {
@@ -24,28 +23,10 @@ describe("Following", function () {
         const socialNetwork = new SocialNetwork();
         users.forEach(user => socialNetwork.register(user))
 
-        socialNetwork.publishMessage(new Message({
-            userId: alice.id,
-            text: "I love the weather today",
-            timestamp: minutesAgo(now, 5)
-        }))
-
-        socialNetwork.publishMessage(new Message({
-            userId: bob.id,
-            text: "Darn! We lost!",
-            timestamp: minutesAgo(now, 2)
-        }))
-
-        socialNetwork.publishMessage(new Message({
-            userId: bob.id,
-            text: "Good game though.",
-            timestamp: minutesAgo(now, 1)
-        }))
-        socialNetwork.publishMessage(new Message({
-            userId: charlie.id,
-            text: "I'm in New York today! Anyone wants to have a coffee?",
-            timestamp: now - (15 * 1000)
-        }))
+        socialNetwork.publish(alice, "I love the weather today", minutesAgo(now, 5));
+        socialNetwork.publish(bob, "Darn! We lost!", minutesAgo(now, 2))
+        socialNetwork.publish(bob, "Good game though.", minutesAgo(now, 1))
+        socialNetwork.publish(charlie, "I'm in New York today! Anyone wants to have a coffee?", now - (15 * 1000))
 
         socialNetwork.follow({userId: charlie.id, target: alice.id})
         socialNetwork.follow({userId: charlie.id, target: bob.id})

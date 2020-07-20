@@ -1,3 +1,5 @@
+import {Message} from "./Message";
+
 export class SocialNetwork {
     allMessages = []
 
@@ -14,6 +16,14 @@ export class SocialNetwork {
 
     publishMessage(message) {
         this.allMessages.push(message)
+    }
+
+    publish(user, text, timestamp) {
+        this.publishMessage(new Message({
+            userId: user.id,
+            text: text,
+            timestamp: timestamp
+        }))
     }
 
     viewTimeline({userId, target}) {

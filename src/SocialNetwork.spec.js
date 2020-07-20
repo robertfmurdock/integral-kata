@@ -21,7 +21,7 @@ describe("social network", function () {
             socialNetwork.publishMessage(element)
         )
 
-        const timeline2 = socialNetwork.viewTimeline(userId2)
+        const timeline2 = socialNetwork.viewTimeline({userId: userId2})
 
         expect(timeline2).toEqual([expectedMessage])
 

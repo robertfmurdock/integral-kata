@@ -16,10 +16,13 @@ describe("Following", function () {
     const alice = new User({id: uuid(), name: "Alice"})
     const bob = new User({id: uuid(), name: "Bob"})
     const charles = new User({id: uuid(), name: "Charles"})
+    const users = [alice, bob, charles]
+
     const now = Date.now()
 
     it("Given active users, Charles can see a timeline populated by all of his followers", function () {
         const socialNetwork = new SocialNetwork();
+        users.forEach(user => socialNetwork.register(user))
 
         socialNetwork.publishMessage(new Message({
             userId: alice.id,
